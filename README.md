@@ -1,9 +1,9 @@
 # pdfSplit.py
 This script will split a PDF in half, but only on a page that contains a string that indicates the start of a new segment.
 
-Instructions  
+# Instructions  
 
-Deploy Script and Pre-requisites
+## Deploy Script and Pre-requisites
 Navigate to Python’s download page and download then install any version in the version 3 stream of python.
 
 Install Python 3 on the server where this script will be executed.
@@ -19,14 +19,14 @@ pip install PyPDF4
 
 Execute script
 
-# Get Help
+## Get Help
 The script can be executed in the following manner to display help information:
 
 ```powershell
 py pdfSplit.py /?
 ```
 
-# Look up page contents
+## Look up page contents
 The script can be executed in the following manner in order to see the content of a specific page for all PDFs in the folder.  This should be used to figure out a search string that indicates the first page of each segment of the PDF.
 
 ```powershell
@@ -38,7 +38,7 @@ For example:
 py .\pdfSplit.py /d "c:/users/username/desktop/pdf" 2
 ```
 
-# Split PDF
+## Split PDF
 The script can be executed in the following manner:
 
 ```powershell
@@ -49,7 +49,7 @@ For example:
 ```powershell
 py pdfSplit.py "C:/Users/username/Desktop/pdf" "C:/Users/username/Desktop/pdf/archive" "C:/Users/username/Desktop/pdf/output" CustomerAccountNumber
 ```
-## The following pseudocode describes the script’s functionality:
+### The following pseudocode describes the script’s functionality:
 
 ```pseudocode
 FOR EACH pdf in <path to folder>
