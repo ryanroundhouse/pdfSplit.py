@@ -24,7 +24,6 @@ The script can be executed in the following manner to display help information:
 
 ```powershell
 py pdfSplit.py /?
-Which will display the cli help information:
 ```
 
 # Look up page contents
@@ -32,12 +31,11 @@ The script can be executed in the following manner in order to see the content o
 
 ```powershell
 py pdfSplit.py /d <path to folder> <page number>
-For example:
 ```
 
+For example:
 ```powershell
-py .\pdfSplit.py /d "c:/users/rg85036/desktop/pdf" 2
-Which could provide a similar output to:
+py .\pdfSplit.py /d "c:/users/username/desktop/pdf" 2
 ```
 
 # Split PDF
@@ -49,7 +47,7 @@ py pdfSplit.py <path to folder> <path to archive folder> <path to output> <strin
 
 For example:
 ```powershell
-py pdfSplit.py "C:/Users/rg85036/Desktop/pdf" "C:/Users/rg85036/Desktop/pdf/archive" "C:/Users/rg85036/Desktop/pdf/output" CustomerAccountNumber
+py pdfSplit.py "C:/Users/username/Desktop/pdf" "C:/Users/username/Desktop/pdf/archive" "C:/Users/username/Desktop/pdf/output" CustomerAccountNumber
 ```
 ## The following pseudocode describes the script’s functionality:
 
