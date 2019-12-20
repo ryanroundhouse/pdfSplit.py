@@ -53,9 +53,9 @@ py pdfSplit.py "C:/Users/username/Desktop/pdf" "C:/Users/username/Desktop/pdf/ar
 
 ```pseudocode
 FOR EACH pdf in <path to folder>
-  GET midpoint in PDF collection containing the <search string>
-  WRITE new pdf with pages 0-midpoint to <output folder>
-  WRITE new pdf with pages midpoint-end to <output folder>
+  CALCULATE where breaks in the pdf should be.
+  FOR EACH break in the pdf
+    WRITE new pdf with pages between last break and next break to <output folder>
   MOVE pdf to <archive folder>
 ```
 
