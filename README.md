@@ -60,3 +60,12 @@ FOR EACH pdf in <path to folder>
 ```
 
 This script assumes there is a search string that will be repeated only in the first page of each new bill.  This is a requirement so that we can detect a the page that starts a new bill and no bills are cut in half to be displayed in another customers' bill.
+
+# Unit tests
+
+All aspects of the pdfTools.py, which is leveraged by pdfSplit.py has unit tests in the file pdfTools_test.py.
+You can run all unit tests with the following command in a folder alongside the code:
+
+```powershell
+py -m unittest pdfTools_test
+```
