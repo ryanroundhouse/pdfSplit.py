@@ -1,5 +1,5 @@
 # pdfSplit.py
-This script will split a PDF in half, but only on a page that contains a string that indicates the start of a new segment.
+This script will split a PDF into a number of pages per output file, but only split on a page that contains a string that indicates the start of a new segment.
 
 # Instructions  
 
@@ -27,27 +27,27 @@ py pdfSplit.py /?
 ```
 
 ## Look up page contents
-The script can be executed in the following manner in order to see the content of a specific page for all PDFs in the folder.  This should be used to figure out a search string that indicates the first page of each segment of the PDF.
+The script can be executed in the following manner in order to see the content of a specific page for a specified PDF.  This should be used to figure out a search string that indicates the first page of each segment of the PDF.
 
 ```powershell
-py pdfSplit.py /d <path to folder> <page number>
+py pdfSplit.py /d <path to PDF file> <page number>
 ```
 
 For example:
 ```powershell
-py .\pdfSplit.py /d "c:/users/username/desktop/pdf" 2
+py .\pdfSplit.py /d "c:/users/username/desktop/pdf/sample/NotAlwaysMultipageBill.pdf" 2
 ```
 
 ## Split PDF
 The script can be executed in the following manner:
 
 ```powershell
-py pdfSplit.py <path to folder> <path to archive folder> <path to output> <string to be present on first page of bill>
+py pdfSplit.py <path to folder> <path to archive folder> <path to output> <string to be present on first page of bill> <ideal chunk size>
 ```
 
 For example:
 ```powershell
-py pdfSplit.py "C:/Users/username/Desktop/pdf" "C:/Users/username/Desktop/pdf/archive" "C:/Users/username/Desktop/pdf/output" CustomerAccountNumber
+py pdfSplit.py "C:/Users/username/Desktop/pdf" "C:/Users/username/Desktop/pdf/archive" "C:/Users/username/Desktop/pdf/output" CustomerAccountNumber "2"
 ```
 ### The following pseudocode describes the script’s functionality:
 
