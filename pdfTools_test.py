@@ -2,35 +2,28 @@ import unittest
 import pdfTools
 import PyPDF4
 
-class TestPdfTools(unittest.TestCase):
-    def test_5SinglePageBill2Chunk(self):
-        # Test that 5 single page bills should return [2, 4]
-        pdfFile = "./samples/5bills.pdf"
-        with open(pdfFile, 'rb') as pdfFileObj:
-            pdfReader = PyPDF4.PdfFileReader(pdfFileObj)
-            self.assertEqual(pdfTools.findBillBreaks(pdfReader, 2, "CustomerAccountNumber"), [2, 4])
-    
+class TestPdfTools(unittest.TestCase): 
     def test_SingleBillReturnsEmptyArray(self):
         # Test that when passed a file with a single page, it should return empty array
-        pdfFile = "./samples/00000145-10_20190508.pdf"
+        pdfFile = "./samples/OneBill.pdf"
         with open(pdfFile, 'rb') as pdfFileObj:
             pdfReader = PyPDF4.PdfFileReader(pdfFileObj)
-            self.assertEqual(pdfTools.findBillBreaks(pdfReader, 1, "CustomerAccountNumber"), [])
+            self.assertEqual(pdfTools.findBillBreaks(pdfReader, 1, "First Page"), [])
 
     def test_ChunkBiggerThanFileReturnsEmptyArray(self):
         # Test that 5 single page bills should return empty array when the chunk is larger than the number of pages
-        pdfFile = "./samples/5bills.pdf"
+        pdfFile = "./samples/NotAlwaysMultipageBill.pdf"
         with open(pdfFile, 'rb') as pdfFileObj:
             pdfReader = PyPDF4.PdfFileReader(pdfFileObj)
-            self.assertEqual(pdfTools.findBillBreaks(pdfReader, 10, "CustomerAccountNumber"), [])
+            self.assertEqual(pdfTools.findBillBreaks(pdfReader, 10, "First Page"), [])
     
     def test_ErrorDisplayedIfNegativeChunkSize(self):
         # Test we receive an exception if invalid chunk size is specified
-        pdfFile = "./samples/5bills.pdf"
+        pdfFile = "./samples/NotAlwaysMultipageBill.pdf"
         with open(pdfFile, 'rb') as pdfFileObj:
             pdfReader = PyPDF4.PdfFileReader(pdfFileObj)
             with self.assertRaises(Exception):
-                pdfTools.findBillBreaks(pdfReader, -1, "CustomerAccountNumber")
+                pdfTools.findBillBreaks(pdfReader, -1, "First Page")
 
     def test_GetPageContent(self):
         # Test getting the page contents
