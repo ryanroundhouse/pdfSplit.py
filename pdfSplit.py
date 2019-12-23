@@ -48,13 +48,20 @@ if os.path.exists(outputFolder) == False:
     os.mkdir(outputFolder)
 
 # Find all PDF files in the input folder.
-filesInFolder = [f for f in os.listdir(inputFolder) if os.path.isfile(f)]
+absoluteFolder = os.path.abspath(inputFolder)
+print("checking for bills in folder " + absoluteFolder)
+filesInFolder = [f for f in os.listdir(absoluteFolder) if os.path.isfile(os.path.join(absoluteFolder,f))]
+for fi in filesInFolder:
+    print("found bill named " + fi)
 pdfFiles = filter(lambda f: f.endswith(('.pdf','.PDF')), filesInFolder)
-print ("Found " + str(len(filesInFolder)) + " PDF files:")
-
+pdfFileList = []
 for pdfFile in pdfFiles:
+    pdfFileList.append(pdfFile)
+print ("Found " + str(len(pdfFileList)) + " PDF files:")
+
+for pdfFile in pdfFileList:
     print("Splitting " + pdfFile)
-    with open(pdfFile, 'rb') as pdfFileObj:
+    with open(os.path.join(absoluteFolder, pdfFile), 'rb') as pdfFileObj:
         pdfReader = PyPDF4.PdfFileReader(pdfFileObj)
         pageSplits = pdfTools.findBillBreaks(pdfReader, idealPagesPerFile, searchString)
 
